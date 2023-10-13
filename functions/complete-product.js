@@ -1,6 +1,6 @@
 const Airtable = require('airtable-node')
 require('dotenv').config()
-const airtable = new Airtable({apiKey:AIRTABLE_API_KEY})
+const airtable = new Airtable({apiKey:process.env.AIRTABLE_API_KEY})
 .base('appWHHC6IaPOMVxrV').table('products')
 
 exports.handler = async(event,context) =>{
@@ -22,7 +22,7 @@ exports.handler = async(event,context) =>{
         } catch (error) {
             return{
                 statusCode:500,
-                body:`Unknown gateway error`
+                body:`${error}`
             }
         }
             
